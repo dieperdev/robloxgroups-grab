@@ -523,10 +523,12 @@ wget.callbacks.write_to_warc = function(url, http_stat)
   end
   is_initial_url = false
   if http_stat["statcode"] ~= 200
-    and http_stat["statcode"] ~= 404 then
+    and http_stat["statcode"] ~= 404
+    and not (item_type == "asset" and http_stat["statcode"] == 203) then
     retry_url = true
     return false
   end
+
   if http_stat["len"] == 0
     and http_stat["statcode"] < 300 then
     retry_url = true
