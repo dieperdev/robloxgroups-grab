@@ -550,7 +550,7 @@ wget.callbacks.write_to_warc = function(url, http_stat)
     error("No item name found.")
   end
   is_initial_url = false
-  if string.match(url["url"], "^https?://cc%-api%-cp%.adobe%.io/api/v2/aero/assets/[^a-f0-9%-]+%?") then
+  if string.match(url["url"], "^https?://cc%-api%-cp%.adobe%.io/api/v2/aero/assets/[a-f0-9%-]+%?") then
     local html = read_file(http_stat["local_file"])
     if not string.match(html, "/content/manifest/version/[0-9]+\"") then
       retry_url = true
