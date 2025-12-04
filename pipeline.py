@@ -268,6 +268,9 @@ class WgetArgs(object):
             elif item_type == 'group-shout':
                 wget_args.extend(['--warc-header', 'robloxgroups-api-shout: '+item_value])
                 wget_args.append('https://apis.roblox.com/community-links/v1/groups/{}/shout'.format(item_value))
+            elif item_type == 'group-roles':
+                wget_args.extend(['--warc-header', 'robloxgroups-api-roles: '+item_value])
+                wget_args.append('https://groups.roblox.com/v1/groups/{}/roles'.format(item_value))
             elif item_type == 'group-featuredcontent':
                 wget_args.extend(['--warc-header', 'robloxgroups-api-featuredcontent: '+item_value])
                 wget_args.append('https://groups.roblox.com/v1/featured-content/event?groupId={}'.format(item_value))
