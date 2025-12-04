@@ -35,9 +35,9 @@ local item_patterns = {
   ["^https?://apis%.roblox%.com/community%-links/v1/groups/([0-9]+)/shout"]="group-shout",
   ["^https?://groups%.roblox%.com/v1/groups/([0-9]+)/roles"]="group-roles",
   ["^https?://groups%.roblox%.com/v1/featured%-content/event%?groupId=([0-9]+)"]="group-featuredcontent",
-  ["^https?://groups%.roblox%.com/v1/groups/([0-9]+)/name%-history(.*)$"]="group-namehistory",
-  ["^https?://groups%.roblox%.com/v1/groups/([0-9]+)/users(.*)$"]="group-members",
-  ["^https?://groups%.roblox%.com/v2/groups/([0-9]+)/wall/posts(.*)$"]="group-wall",
+  ["^https?://groups%.roblox%.com/v1/groups/([0-9]+)/name%-history(.*)$"]="group-namehistory", -- Needs fixing
+  ["^https?://groups%.roblox%.com/v1/groups/([0-9]+)/users(.*)$"]="group-members", -- Needs fixing
+  ["^https?://groups%.roblox%.com/v2/groups/([0-9]+)/wall/posts(.*)$"]="group-wall", -- Needs fixing
 }
 
 abort_item = function(item)
