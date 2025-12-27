@@ -152,6 +152,8 @@ find_item = function(url)
         type_ = "group-wall"
       elseif string.find(url, "thumbnails") ~= nil then
         type_ = "group-icon-json"
+      elseif string.find(url, "thumbnails") ~= nil then
+        type_ = "group-icon-image"
       elseif string.find(url, "groups") ~= nil then
         type_ = "group-meta"
       end
@@ -257,7 +259,7 @@ allowed = function(url, parenturl)
   end
 
   if string.match(url, "^https?://[^/]*rbxcdn.com/") then
-    if item_type == "asset" then
+    if item_type == "group-icon-image" then
       return true
     end
     return false
@@ -566,7 +568,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
     local next_url = json_data[1]["imageUrl"]
     local item_value = next_url:gsub("https?://", ""):gsub("/", "_")
 
-    table.insert(urls, { url=next_url, link_expect_html=0, link_expect_css=0, method="GET" })
+    table.insert(urls, { url=next_url })
     discover_item(discovered_items, "group-icon-image:"..item_value)
   end
 
