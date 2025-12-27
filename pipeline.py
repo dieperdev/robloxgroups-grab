@@ -305,9 +305,16 @@ class WgetArgs(object):
 #                wget_args.extend(['--warc-header', 'adobeaero-behance-user: '+item_value])
 #                wget_args.extend(['--warc-header', 'behance-user: '+item_value])
 #                wget_args.append('https://www.behance.net/'+item_value)
-            elif item_type == 'asset':
-                url = 'https://' + item_value
-                wget_args.extend(['--warc-header', 'robloxgroups-asset: '+url])
+            elif item_type == 'group-icon-json':
+                group_id, image_format = item_value.split(':', 1)
+                # requests.get('https://cdn.cp.adobe.io/content/2/dcx/{}/content/manifest/version/head'.format(item_value))
+                wget_args.extend(['--warc-header', 'robloxgroups-api-icon-json: '+item_value])
+
+                wget_args.append('https://thumbnails.roblox.com/v1/groups/icons?groupIds={}&size=420x420&format={}&isCircular=false'.format(group_id, image_format))
+            elif item_type == 'group-icon-image':
+                url = 'https://' + item_value.replace('_', '/')
+
+                wget_args.extend(['--warc-header', 'robloxgroups-api-icon-image: '+item_value])
                 wget_args.append(url)
             else:
                 raise Exception('Unknown item')
